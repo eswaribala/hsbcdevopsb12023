@@ -1,0 +1,29 @@
+node('master') {
+    def mvnHome
+    
+  
+   stage('initialize')
+   {
+       tool name: 'Maven', type: 'maven'
+       mvnHome = tool 'Maven'
+       path='C:/Users/Balasubramaniam/.jenkins/workspace/currencyapidemo/currencyapijenkins/pom.xml' 
+   }
+    
+   stage('Build') {
+      // Run the maven build
+      if (isUnix()) {
+         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean "
+      } else {
+         bat(/"${mvnHome}\bin\mvn"  -f ${path}  -Dmaven.test.failure.ignore clean /)
+      }
+   }
+   
+}
+   
+   
+   
+    
+
+
+
+
