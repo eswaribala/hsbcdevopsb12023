@@ -23,6 +23,9 @@ git --version
 s
 sudo apt update
 
+ netstat -ltnp | grep -w '3000'
+
+
 sudo apt install maven
 
 sudo usermod -aG docker jenkins
